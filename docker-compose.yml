@@ -8,7 +8,7 @@ services:
       - "5900-5907:3000"
     # env_file:
     #   - website/.env
-    environement:
+    environment:
       - "DATABASE_URL=${DATABASE_URL}"
       - "POSTGRES_USER=${POSTGRES_USER}"
       - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
