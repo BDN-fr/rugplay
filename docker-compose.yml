@@ -6,31 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5900-5907:3000"
-    # env_file:
-    #   - website/.env
-    environment:
-      - "DATABASE_URL=${DATABASE_URL}"
-      - "POSTGRES_USER=${POSTGRES_USER}"
-      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
-      - "POSTGRES_DB=${POSTGRES_DB}"
-      
-      - "REDIS_URL=${REDIS_URL}"
-      
-      - "PRIVATE_BETTER_AUTH_SECRET=${PRIVATE_BETTER_AUTH_SECRET}"
-      - "PUBLIC_BETTER_AUTH_URL=${PUBLIC_BETTER_AUTH_URL}"
-      
-      - "PUBLIC_WEBSOCKET_URL=${PUBLIC_WEBSOCKET_URL}"
-      
-      - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
-      - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
-      
-      - "PRIVATE_B2_KEY_ID=${PRIVATE_B2_KEY_ID}"
-      - "PRIVATE_B2_APP_KEY=${PRIVATE_B2_APP_KEY}"
-      - "PUBLIC_B2_BUCKET=${PUBLIC_B2_BUCKET}"
-      - "PUBLIC_B2_ENDPOINT=${PUBLIC_B2_ENDPOINT}"
-      - "PUBLIC_B2_REGION=${PUBLIC_B2_REGION}"
-      
-      - "OPENROUTER_API_KEY=${OPENROUTER_API_KEY}"
+    env_file:
+      - .env
     depends_on:
       - websocket
     restart: unless-stopped
