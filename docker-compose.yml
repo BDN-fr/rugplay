@@ -7,6 +7,7 @@ services:
       args:
       - REDIS_URL=${REDIS_URL}
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - PUBLIC_B2_ENDPOINT=${PUBLIC_B2_ENDPOINT}
     ports:
       - "5900-5907:3000"
     # env_file:
