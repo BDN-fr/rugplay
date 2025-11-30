@@ -12,7 +12,7 @@
 
 	async function onConfirm() {
 		await signIn.social({
-			provider: 'google',
+			provider: 'discord',
 			callbackURL: `${page.url.pathname}?signIn=1`
 		});
 	}
@@ -39,10 +39,10 @@
 			>
 				<img
 					class="h-5 w-5"
-					src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
-					alt="Google"
+					src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg"
+					alt="Discord"
 				/>
-				<span>Continue with Google</span>
+				<span>Continue with Discord</span>
 			</Button>
 
 			<p class="text-muted-foreground text-center text-xs">

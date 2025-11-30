@@ -44,31 +44,65 @@ export const auth = betterAuth({
         schema: schema,
     }),
     socialProviders: {
-        google: {
-            clientId: privateEnv.GOOGLE_CLIENT_ID,
-            clientSecret: privateEnv.GOOGLE_CLIENT_SECRET,
+        // google: {
+        //     clientId: privateEnv.GOOGLE_CLIENT_ID,
+        //     clientSecret: privateEnv.GOOGLE_CLIENT_SECRET,
+        //     mapProfileToUser: async (profile) => {
+        //         const newUsername = generateUsername();
+        //         let s3ImageKey: string | null = null;
+
+        //         if (profile.picture) {
+        //             try {
+        //                 const response = await fetch(profile.picture);
+        //                 if (!response.ok) {
+        //                     console.error(`Failed to fetch profile picture: ${response.statusText}`);
+        //                 } else {
+        //                     const blob = await response.blob();
+        //                     const arrayBuffer = await blob.arrayBuffer();
+        //                     s3ImageKey = await uploadProfilePicture(
+        //                         profile.sub,
+        //                         new Uint8Array(arrayBuffer),
+        //                         blob.type || 'image/jpeg'
+        //                     );
+        //                 }
+        //             } catch (error) {
+        //                 console.error('Failed to upload profile picture during social login:', error);
+        //             }
+        //         }
+
+        //         return {
+        //             name: profile.name,
+        //             email: profile.email,
+        //             image: s3ImageKey,
+        //             username: newUsername,
+        //         };
+        //     },
+        // },
+        discord: { 
+            clientId: process.env.DISCORD_CLIENT_ID as string, 
+            clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
             mapProfileToUser: async (profile) => {
                 const newUsername = generateUsername();
                 let s3ImageKey: string | null = null;
 
-                if (profile.picture) {
-                    try {
-                        const response = await fetch(profile.picture);
-                        if (!response.ok) {
-                            console.error(`Failed to fetch profile picture: ${response.statusText}`);
-                        } else {
-                            const blob = await response.blob();
-                            const arrayBuffer = await blob.arrayBuffer();
-                            s3ImageKey = await uploadProfilePicture(
-                                profile.sub,
-                                new Uint8Array(arrayBuffer),
-                                blob.type || 'image/jpeg'
-                            );
-                        }
-                    } catch (error) {
-                        console.error('Failed to upload profile picture during social login:', error);
-                    }
-                }
+                // if (profile.picture) {
+                //     try {
+                //         const response = await fetch(profile.picture);
+                //         if (!response.ok) {
+                //             console.error(`Failed to fetch profile picture: ${response.statusText}`);
+                //         } else {
+                //             const blob = await response.blob();
+                //             const arrayBuffer = await blob.arrayBuffer();
+                //             s3ImageKey = await uploadProfilePicture(
+                //                 profile.sub,
+                //                 new Uint8Array(arrayBuffer),
+                //                 blob.type || 'image/jpeg'
+                //             );
+                //         }
+                //     } catch (error) {
+                //         console.error('Failed to upload profile picture during social login:', error);
+                //     }
+                // }
 
                 return {
                     name: profile.name,
@@ -77,7 +111,7 @@ export const auth = betterAuth({
                     username: newUsername,
                 };
             },
-        }
+        }, 
     },
     user: {
         additionalFields: {

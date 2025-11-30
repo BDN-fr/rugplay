@@ -20,6 +20,9 @@ services:
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
       
+      - DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID}
+      - DISCORD_CLIENT_SECRET${DISCORD_CLIENT_SECRET}
+      
       - PRIVATE_B2_KEY_ID=${PRIVATE_B2_KEY_ID}
       - PRIVATE_B2_APP_KEY=${PRIVATE_B2_APP_KEY}
       - PUBLIC_B2_BUCKET=${PUBLIC_B2_BUCKET}
@@ -46,6 +49,9 @@ services:
       
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+
+      - DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID}
+      - DISCORD_CLIENT_SECRET${DISCORD_CLIENT_SECRET}
       
       - "PRIVATE_B2_KEY_ID=${PRIVATE_B2_KEY_ID}"
       - "PRIVATE_B2_APP_KEY=${PRIVATE_B2_APP_KEY}"
@@ -71,6 +77,8 @@ services:
       - "8082:8080"
     # env_file:
     #   - website/.env
+    environment:
+      - REDIS_URL=${REDIS_URL}
     restart: unless-stopped
     # networks:
     #   - shared_backend
