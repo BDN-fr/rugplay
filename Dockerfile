@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:1
 ARG NODE_VERSION=20
 ARG REDIS_URL
+ARG OPENROUTER_API_KEY
 FROM node:${NODE_VERSION}-slim AS base-node
 WORKDIR /app
 ENV NODE_ENV="production"
@@ -30,6 +31,7 @@ COPY website/. .
 RUN mkdir -p .svelte-kit
 
 ENV REDIS_URL=${REDIS_URL}
+ENV OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
 
 # Generate SvelteKit types and build
 RUN npm run build

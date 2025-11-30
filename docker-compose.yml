@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
       - REDIS_URL=${REDIS_URL}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
     ports:
       - "5900-5907:3000"
     # env_file:
