@@ -1,5 +1,6 @@
 # syntax = docker/dockerfile:1
 ARG NODE_VERSION=20
+ARG REDIS_URL
 FROM node:${NODE_VERSION}-slim AS base-node
 WORKDIR /app
 ENV NODE_ENV="production"
@@ -28,8 +29,9 @@ COPY website/. .
 # Create .svelte-kit directory if it doesn't exist
 RUN mkdir -p .svelte-kit
 
-# Generate SvelteKit types and build
+ENV REDIS_URL=${REDIS_URL}
 
+# Generate SvelteKit types and build
 RUN npm run build
 
 FROM base-node AS build-websocket
